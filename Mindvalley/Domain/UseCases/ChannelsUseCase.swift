@@ -1,0 +1,60 @@
+//
+//  ChannelsUseCase.swift
+//  Mindvalley
+//
+//  Created by Mohamed Ramadan on 03/07/2022.
+//
+
+import Foundation
+ 
+protocol ChannelsUseCase {
+    func getNewEpisodes(completion: @escaping (Result<[EpisodeModel], Error>) -> Void)
+    func getChannels(completion: @escaping (Result<[ChannelModel], Error>) -> Void)
+    func getCetagories(completion: @escaping (Result<[CategoryModel], Error>) -> Void)
+}
+
+final class DefaultChannelsUseCase: ChannelsUseCase {
+     
+    private let channelsRepository: ChannelsRepository
+    
+    init(channelsRepository: ChannelsRepository) {
+        self.channelsRepository = channelsRepository
+    }
+    
+    func getNewEpisodes(completion: @escaping (Result<[EpisodeModel], Error>) -> Void) {
+        return channelsRepository.getNewEpisodes { (result) in
+            switch result {
+                case .success(let model):
+                completion(.success([])) //TODO: Map DTO to Domain Model
+                    
+                case .failure(let error):
+                    completion(.failure(error))
+            }
+         }
+    }
+    
+    func getChannels(completion: @escaping (Result<[ChannelModel], Error>) -> Void) {
+        return channelsRepository.getChannels { (result) in
+            switch result {
+                case .success(let model):
+                completion(.success([])) // TODO: Map DTO to Domain Model
+                    
+                case .failure(let error):
+                    completion(.failure(error))
+            }
+         }
+    }
+    
+    func getCetagories(completion: @escaping (Result<[CategoryModel], Error>) -> Void) {
+        return channelsRepository.getCetagories { (result) in
+            switch result {
+                case .success(let model):
+                completion(.success([])) //TODO: Map DTO to Domain Model
+                    
+                case .failure(let error):
+                    completion(.failure(error))
+            }
+         }
+    }
+    
+}

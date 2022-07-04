@@ -43,3 +43,36 @@ struct SeriesDTO: Codable {
     let coverAsset: AssetDTO
     let id: String?
 }
+
+// MARK: - Mapping To Domain
+extension ChannelsResponseDTO {
+    func toDomain() -> [ChannelModel] {
+        return channels.map{$0.toDomain()}
+    }
+}
+extension ChannelDTO {
+    func toDomain() -> ChannelModel {
+        return .init(title: title,
+                     id: id ?? "",
+                     mediaCount: mediaCount ?? 0,
+                     slug: slug ?? "",
+                     series: series?.map{$0.toDomain()},
+                     latestMedia: latestMedia?.map{$0.toDomain()} ?? [],
+                     iconAsset: (iconAsset?.toDomain())!,
+                     coverAsset: (coverAsset?.toDomain())!)
+    }
+}
+
+extension AssetDTO {
+    func toDomain() -> AssetModel {
+        return .init(thumbnailURL: thumbnailURL, url: url)
+    }
+}
+
+extension SeriesDTO {
+    func toDomain() -> SeriesModel {
+        return .init(id: id ?? "",
+                     title: title,
+                     coverAsset: coverAsset.toDomain())
+    }
+}

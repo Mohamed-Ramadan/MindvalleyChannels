@@ -59,6 +59,12 @@ extension MediaResponseEntity {
     }
 }
 
+extension MediaChannelResponseEntity {
+    func toDTO() -> MediaChannelDTO {
+        return .init(title: title ?? "")
+    }
+}
+
 extension CategoriesResponseEntity {
     func toDTO() -> CategoriesResponseDTO {
         return .init(categories: categories?.map({($0 as! CategoryResponseEntity).toDTO()}) ?? [])
@@ -150,6 +156,16 @@ extension MediaDTO {
         entity.title = title
         entity.coverAsset = coverAsset?.toEntity(in: context)
         entity.channel = channel?.toEntity(in: context)
+        
+        return entity
+    }
+}
+
+extension MediaChannelDTO {
+    func toEntity(in context: NSManagedObjectContext) -> MediaChannelResponseEntity {
+        let entity: MediaChannelResponseEntity = .init(context: context)
+        
+        entity.title = title
         
         return entity
     }

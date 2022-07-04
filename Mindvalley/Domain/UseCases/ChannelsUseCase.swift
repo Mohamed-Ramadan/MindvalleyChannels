@@ -8,7 +8,7 @@
 import Foundation
  
 protocol ChannelsUseCase {
-    func getNewEpisodes(completion: @escaping (Result<[EpisodeModel], Error>) -> Void)
+    func getNewEpisodes(completion: @escaping (Result<[MediaModel], Error>) -> Void)
     func getChannels(completion: @escaping (Result<[ChannelModel], Error>) -> Void)
     func getCetagories(completion: @escaping (Result<[CategoryModel], Error>) -> Void)
 }
@@ -21,11 +21,11 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
         self.channelsRepository = channelsRepository
     }
     
-    func getNewEpisodes(completion: @escaping (Result<[EpisodeModel], Error>) -> Void) {
+    func getNewEpisodes(completion: @escaping (Result<[MediaModel], Error>) -> Void) {
         return channelsRepository.getNewEpisodes { (result) in
             switch result {
                 case .success(let model):
-                completion(.success([])) //TODO: Map DTO to Domain Model
+                completion(.success(model.data?.toDomain() ?? []))
                     
                 case .failure(let error):
                     completion(.failure(error))
@@ -37,7 +37,7 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
         return channelsRepository.getChannels { (result) in
             switch result {
                 case .success(let model):
-                completion(.success([])) // TODO: Map DTO to Domain Model
+                completion(.success(model.data?.toDomain() ?? []))
                     
                 case .failure(let error):
                     completion(.failure(error))
@@ -49,7 +49,7 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
         return channelsRepository.getCetagories { (result) in
             switch result {
                 case .success(let model):
-                completion(.success([])) //TODO: Map DTO to Domain Model
+                completion(.success(model.data?.toDomain() ?? []))
                     
                 case .failure(let error):
                     completion(.failure(error))

@@ -18,5 +18,31 @@ struct MediaDTO: Codable {
     let type: String
     let title: String
     let coverAsset: AssetDTO?
-    let channel: ChannelDTO?
+    let channel: MediaChannelDTO?
+}
+
+struct MediaChannelDTO: Codable {
+    let title: String
+}
+
+// MARK: - Mapping To Domain
+extension NewEpisodesResponseDTO {
+    func toDomain() -> [MediaModel] {
+        return media.map{$0.toDomain()}
+    }
+}
+
+extension MediaDTO {
+    func toDomain() -> MediaModel {
+        return .init(type: type,
+                     title: title,
+                     coverAsset: AssetDTO(thumbnailURL: "", url: "").toDomain(),
+                     channelTitle: channel?.title ?? "")
+    }
+}
+
+extension MediaChannelDTO {
+    func toDomain() -> String {
+        return title
+    }
 }

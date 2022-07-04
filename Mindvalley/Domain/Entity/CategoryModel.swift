@@ -8,4 +8,5 @@
 import Foundation
 
 struct CategoryModel {
+    let name: String
 }

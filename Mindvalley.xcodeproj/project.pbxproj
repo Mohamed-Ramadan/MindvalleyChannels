@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC0B9C122873A0A10007FE1F /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4FD287260BB00B129D1 /* MediaModel.swift */; };
+		DC63E8B62873AD520014FFF5 /* Channels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4F42872600000B129D1 /* Channels.xcdatamodeld */; };
 		DCE8D3CB28719FCA00B129D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D3CA28719FCA00B129D1 /* AppDelegate.swift */; };
 		DCE8D3CD28719FCA00B129D1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D3CC28719FCA00B129D1 /* SceneDelegate.swift */; };
 		DCE8D3D428719FCB00B129D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE8D3D328719FCB00B129D1 /* Assets.xcassets */; };
@@ -25,7 +27,6 @@
 		DCE8D4EE28725FB000B129D1 /* NetworkSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4E928725FA900B129D1 /* NetworkSupport.swift */; };
 		DCE8D4F228725FEC00B129D1 /* DefaultChannelsRepositoryImplementer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4F128725FEA00B129D1 /* DefaultChannelsRepositoryImplementer.swift */; };
 		DCE8D500287260BF00B129D1 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4FF287260BB00B129D1 /* CategoryModel.swift */; };
-		DCE8D501287260BF00B129D1 /* EpisodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4FD287260BB00B129D1 /* EpisodeModel.swift */; };
 		DCE8D502287260BF00B129D1 /* ChannelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4FE287260BB00B129D1 /* ChannelModel.swift */; };
 		DCE8D508287260E700B129D1 /* ChannelsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D507287260E700B129D1 /* ChannelsRepository.swift */; };
 		DCE8D509287260F600B129D1 /* ChannelsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D505287260CF00B129D1 /* ChannelsUseCase.swift */; };
@@ -35,7 +36,6 @@
 		DCE8D5142872634200B129D1 /* DefaultChannelsCoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D5122872634200B129D1 /* DefaultChannelsCoreDataStorage.swift */; };
 		DCE8D5152872634200B129D1 /* ChannelsResponseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D5132872634200B129D1 /* ChannelsResponseStorage.swift */; };
 		DCE8D5172872635600B129D1 /* ChannelResponseEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D5162872635600B129D1 /* ChannelResponseEntity+Mapping.swift */; };
-		DCE8D5222872EAA000B129D1 /* Channels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4F42872600000B129D1 /* Channels.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +78,7 @@
 		DCE8D4EB28725FA900B129D1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DCE8D4F128725FEA00B129D1 /* DefaultChannelsRepositoryImplementer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelsRepositoryImplementer.swift; sourceTree = "<group>"; };
 		DCE8D4F52872600000B129D1 /* ListPhotos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListPhotos.xcdatamodel; sourceTree = "<group>"; };
-		DCE8D4FD287260BB00B129D1 /* EpisodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeModel.swift; sourceTree = "<group>"; };
+		DCE8D4FD287260BB00B129D1 /* MediaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
 		DCE8D4FE287260BB00B129D1 /* ChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelModel.swift; sourceTree = "<group>"; };
 		DCE8D4FF287260BB00B129D1 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		DCE8D505287260CF00B129D1 /* ChannelsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsUseCase.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 		DCE8D4FA2872608D00B129D1 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				DCE8D4FD287260BB00B129D1 /* EpisodeModel.swift */,
+				DCE8D4FD287260BB00B129D1 /* MediaModel.swift */,
 				DCE8D4FE287260BB00B129D1 /* ChannelModel.swift */,
 				DCE8D4FF287260BB00B129D1 /* CategoryModel.swift */,
 			);
@@ -459,7 +459,6 @@
 				DCE8D502287260BF00B129D1 /* ChannelModel.swift in Sources */,
 				DCE8D4F228725FEC00B129D1 /* DefaultChannelsRepositoryImplementer.swift in Sources */,
 				DCE8D500287260BF00B129D1 /* CategoryModel.swift in Sources */,
-				DCE8D501287260BF00B129D1 /* EpisodeModel.swift in Sources */,
 				DCE8D508287260E700B129D1 /* ChannelsRepository.swift in Sources */,
 				DCE8D4EC28725FAB00B129D1 /* Constants.swift in Sources */,
 				DCE8D4E728725F9A00B129D1 /* Endpoint.swift in Sources */,
@@ -470,10 +469,11 @@
 				DCE8D4E328725F7F00B129D1 /* CategoriesResponseDTO+Mapping.swift in Sources */,
 				DCE8D3CB28719FCA00B129D1 /* AppDelegate.swift in Sources */,
 				DCE8D5142872634200B129D1 /* DefaultChannelsCoreDataStorage.swift in Sources */,
-				DCE8D5222872EAA000B129D1 /* Channels.xcdatamodeld in Sources */,
 				DCE8D4E428725F7F00B129D1 /* ChannelsResponseDTO+Mapping.swift in Sources */,
+				DC63E8B62873AD520014FFF5 /* Channels.xcdatamodeld in Sources */,
 				DCE8D4E228725F7F00B129D1 /* NewEpisodesResponseDTO+Mapping.swift in Sources */,
 				DCE8D509287260F600B129D1 /* ChannelsUseCase.swift in Sources */,
+				DC0B9C122873A0A10007FE1F /* MediaModel.swift in Sources */,
 				DCE8D4E828725F9C00B129D1 /* Endpoint+Channels.swift in Sources */,
 				DCE8D50E2872614700B129D1 /* UIViewController+Extension.swift in Sources */,
 				DCE8D3CD28719FCA00B129D1 /* SceneDelegate.swift in Sources */,

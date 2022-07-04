@@ -16,3 +16,16 @@ struct CategoriesResponseDTO: Codable {
 struct CategoryDTO: Codable {
     let name: String
 }
+
+//MARK: - Mapping To Domain
+extension CategoriesResponseDTO {
+    func toDomain() -> [CategoryModel] {
+        return categories.map{$0.toDomain()}
+    }
+}
+
+extension CategoryDTO {
+    func toDomain() -> CategoryModel {
+        return .init(name: name)
+    }
+}

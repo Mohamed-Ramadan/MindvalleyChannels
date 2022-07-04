@@ -1,24 +1,58 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="PhotoResponseEntity" representedClassName="PhotoResponseEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="author" optional="YES" attributeType="String"/>
-        <attribute name="downloadUrl" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AssetsResponseEntity" representedClassName="AssetsResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="thumbnailURL" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
-        <relationship name="photosResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotosResponseEntity" inverseName="photos" inverseEntity="PhotosResponseEntity"/>
+        <relationship name="channelCover" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChannelResponseEntity" inverseName="coverAsset" inverseEntity="ChannelResponseEntity"/>
+        <relationship name="channelIcon" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChannelResponseEntity" inverseName="iconAsset" inverseEntity="ChannelResponseEntity"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaResponseEntity" inverseName="coverAsset" inverseEntity="MediaResponseEntity"/>
+        <relationship name="series" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SeriesResponseEntity" inverseName="coverAsset" inverseEntity="SeriesResponseEntity"/>
     </entity>
-    <entity name="PhotosRequestEntity" representedClassName="PhotosRequestEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="limit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="page" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="response" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotosResponseEntity" inverseName="request" inverseEntity="PhotosResponseEntity"/>
+    <entity name="CategoriesResponseEntity" representedClassName="CategoriesResponseEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CategoryResponseEntity" inverseName="categoriesResponse" inverseEntity="CategoryResponseEntity"/>
     </entity>
-    <entity name="PhotosResponseEntity" representedClassName="PhotosResponseEntity" syncable="YES" codeGenerationType="class">
-        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="PhotoResponseEntity" inverseName="photosResponse" inverseEntity="PhotoResponseEntity"/>
-        <relationship name="request" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotosRequestEntity" inverseName="response" inverseEntity="PhotosRequestEntity"/>
+    <entity name="CategoryResponseEntity" representedClassName="CategoryResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="categoriesResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CategoriesResponseEntity" inverseName="categories" inverseEntity="CategoriesResponseEntity"/>
+    </entity>
+    <entity name="ChannelResponseEntity" representedClassName="ChannelResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="mediaCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="channelsResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChannelsResponseEntity" inverseName="channels" inverseEntity="ChannelsResponseEntity"/>
+        <relationship name="coverAsset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AssetsResponseEntity" inverseName="channelCover" inverseEntity="AssetsResponseEntity"/>
+        <relationship name="iconAsset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AssetsResponseEntity" inverseName="channelIcon" inverseEntity="AssetsResponseEntity"/>
+        <relationship name="latestMedia" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MediaResponseEntity" inverseName="channel" inverseEntity="MediaResponseEntity"/>
+        <relationship name="series" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SeriesResponseEntity" inverseName="channel" inverseEntity="SeriesResponseEntity"/>
+    </entity>
+    <entity name="ChannelsResponseEntity" representedClassName="ChannelsResponseEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="channels" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChannelResponseEntity" inverseName="channelsResponse" inverseEntity="ChannelResponseEntity"/>
+    </entity>
+    <entity name="MediaResponseEntity" representedClassName="MediaResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="channel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChannelResponseEntity" inverseName="latestMedia" inverseEntity="ChannelResponseEntity"/>
+        <relationship name="coverAsset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AssetsResponseEntity" inverseName="media" inverseEntity="AssetsResponseEntity"/>
+        <relationship name="mediasResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediasResponseEntity" inverseName="media" inverseEntity="MediasResponseEntity"/>
+    </entity>
+    <entity name="MediasResponseEntity" representedClassName="MediasResponseEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MediaResponseEntity" inverseName="mediasResponse" inverseEntity="MediaResponseEntity"/>
+    </entity>
+    <entity name="SeriesResponseEntity" representedClassName="SeriesResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="channel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChannelResponseEntity" inverseName="series" inverseEntity="ChannelResponseEntity"/>
+        <relationship name="coverAsset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AssetsResponseEntity" inverseName="series" inverseEntity="AssetsResponseEntity"/>
     </entity>
     <elements>
-        <element name="PhotoResponseEntity" positionX="-27.02685546875" positionY="150.267333984375" width="128" height="118"/>
-        <element name="PhotosRequestEntity" positionX="-63" positionY="-18" width="128" height="88"/>
-        <element name="PhotosResponseEntity" positionX="193.9540405273438" positionY="96.004638671875" width="128" height="73"/>
+        <element name="MediaResponseEntity" positionX="-168.34375" positionY="-3607.57421875" width="128" height="118"/>
+        <element name="AssetsResponseEntity" positionX="-57.26171875" positionY="-3896.73828125" width="128" height="133"/>
+        <element name="ChannelResponseEntity" positionX="216.90234375" positionY="-3750.77734375" width="128" height="178"/>
+        <element name="SeriesResponseEntity" positionX="159.79296875" positionY="-3462.92578125" width="128" height="103"/>
+        <element name="CategoryResponseEntity" positionX="217.35546875" positionY="-3810.921875" width="128" height="73"/>
+        <element name="ChannelsResponseEntity" positionX="389.515625" positionY="-3712.2578125" width="128" height="58"/>
+        <element name="CategoriesResponseEntity" positionX="215.109375" positionY="-3892.68359375" width="128" height="58"/>
+        <element name="MediasResponseEntity" positionX="-123.9140625" positionY="-3432.0234375" width="128" height="58"/>
     </elements>
 </model>

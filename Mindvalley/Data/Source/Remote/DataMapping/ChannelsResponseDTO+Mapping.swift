@@ -15,18 +15,18 @@ struct ChannelsResponseDTO: Codable {
 // MARK: - Channel
 struct ChannelDTO: Codable {
     let title: String
-    let series: [SeriesDTO]?
-    let mediaCount: Int?
-    let latestMedia: [MediaDTO]?
     let id: String?
-    let iconAsset: IconAssetDTO?
-    let coverAsset: CoverAssetDTO?
+    let mediaCount: Int?
     let slug: String?
+    let series: [SeriesDTO]?
+    let latestMedia: [MediaDTO]?
+    let iconAsset: AssetDTO?
+    let coverAsset: AssetDTO?
 }
 
 
 // MARK: - IconAsset
-struct IconAssetDTO: Codable {
+struct AssetDTO: Codable {
     let thumbnailURL: String?
     let url: String?
 
@@ -40,6 +40,6 @@ struct IconAssetDTO: Codable {
 // MARK: - Series
 struct SeriesDTO: Codable {
     let title: String
-    let coverAsset: CoverAssetDTO
+    let coverAsset: AssetDTO
     let id: String?
 }

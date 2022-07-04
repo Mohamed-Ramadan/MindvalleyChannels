@@ -15,19 +15,8 @@ struct NewEpisodesResponseDTO: Codable {
 
 // MARK: - Media
 struct MediaDTO: Codable {
-    let type: TypeEnum
+    let type: String
     let title: String
-    let coverAsset: CoverAssetDTO
+    let coverAsset: AssetDTO?
     let channel: ChannelDTO?
-}
-
-enum TypeEnum: String, Codable {
-    case course = "course"
-    case video = "video"
-}
-
-
-// MARK: - CoverAsset
-struct CoverAssetDTO: Codable {
-    let url: String
 }

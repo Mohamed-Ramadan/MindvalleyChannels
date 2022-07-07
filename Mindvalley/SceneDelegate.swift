@@ -19,11 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         
-//        let channelsViewController = ChannelsViewController(nibName :ChannelsViewController.identifier,bundle : nil)
-//        let navigationController = UINavigationController(rootViewController: channelsViewController)
-//
+        let channelsViewController = ChannelsViewController(nibName: ChannelsViewController.identifier, bundle : nil)
+        let navigationController = UINavigationController(rootViewController: channelsViewController)
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UIViewController() // navigationController
+        window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
     }

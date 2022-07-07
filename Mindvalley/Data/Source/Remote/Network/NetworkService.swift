@@ -36,13 +36,18 @@ class NetworkService {
   
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
                 return
             }
             
             guard let data = data else {
                 let error = NSError(domain: "Data not valid or empty", code: 402, userInfo: nil)
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+                
                 return
             }
             
@@ -59,10 +64,18 @@ class NetworkService {
         do {
             let decoder = JSONDecoder()
             let model = try decoder.decode(DataResponseDTO<T>.self, from: data)
-            completion(.success(model))
+            PrintHelper.logNetwork(model)
+            
+            DispatchQueue.main.async {
+                completion(.success(model))
+            }
+            
         } catch let error {
             // return decoding failed
-            completion(.failure(error))
+            DispatchQueue.main.async {
+                completion(.failure(error))
+            }
+            
             PrintHelper.logNetwork("❌ Error in Mapping\n\(url)\nError:\n\(error)")
         }
     }

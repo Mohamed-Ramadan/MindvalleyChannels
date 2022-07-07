@@ -58,7 +58,7 @@ extension ChannelDTO {
                      slug: slug ?? "",
                      series: series?.map{$0.toDomain()},
                      latestMedia: latestMedia?.map{$0.toDomain()} ?? [],
-                     iconAsset: (iconAsset?.toDomain())!,
+                     iconAsset: iconAsset?.toDomain(),
                      coverAsset: (coverAsset?.toDomain())!)
     }
 }

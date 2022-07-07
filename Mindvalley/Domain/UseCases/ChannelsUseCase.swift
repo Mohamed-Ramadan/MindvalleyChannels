@@ -17,7 +17,7 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
      
     private let channelsRepository: ChannelsRepository
     
-    init(channelsRepository: ChannelsRepository) {
+    init(channelsRepository: ChannelsRepository = DefaultChannelsRepositoryImplementer()) {
         self.channelsRepository = channelsRepository
     }
     

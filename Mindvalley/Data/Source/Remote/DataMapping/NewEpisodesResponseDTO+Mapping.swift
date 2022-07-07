@@ -36,7 +36,7 @@ extension MediaDTO {
     func toDomain() -> MediaModel {
         return .init(type: type,
                      title: title,
-                     coverAsset: AssetDTO(thumbnailURL: "", url: "").toDomain(),
+                     coverAsset: coverAsset?.url ?? "",
                      channelTitle: channel?.title ?? "")
     }
 }

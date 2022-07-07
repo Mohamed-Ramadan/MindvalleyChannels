@@ -14,7 +14,7 @@ struct ChannelModel {
     let slug: String
     let series: [SeriesModel]?
     let latestMedia: [MediaModel]
-    let iconAsset: AssetModel
+    let iconAsset: AssetModel?
     let coverAsset: AssetModel
 }
 

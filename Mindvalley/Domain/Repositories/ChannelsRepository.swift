@@ -8,7 +8,10 @@
 import Foundation
 
 protocol ChannelsRepository {
-    func getNewEpisodes(completion: @escaping Response<NewEpisodesResponseDTO>)
-    func getChannels(completion: @escaping Response<ChannelsResponseDTO>)
-    func getCetagories(completion: @escaping Response<CategoriesResponseDTO>)
+    func getNewEpisodes(cached: @escaping ([MediaModel])->Void,
+                        completion: @escaping Response<NewEpisodesResponseDTO>)
+    func getChannels(cached: @escaping ([ChannelModel])->Void,
+                     completion: @escaping Response<ChannelsResponseDTO>)
+    func getCetagories(cached: @escaping ([CategoryModel])->Void,
+                       completion: @escaping Response<CategoriesResponseDTO>)
 }

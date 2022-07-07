@@ -22,7 +22,12 @@ class NewEpisodeCollectionViewCell: UICollectionViewCell, MediaCell {
     
     func showMedia(media: MediaModel?) {
         self.mediaTitle.text = media?.title
-        self.channelTitle.text = media?.channelTitle 
         self.mediaImage.loadImage(from: URL(string: media?.coverAsset ?? "")!)
+        
+        if let channelTitle = media?.channelTitle, !channelTitle.isEmpty {
+            self.channelTitle.text = media?.channelTitle
+        } else {
+            self.channelTitle.isHidden = true
+        }
     }
 }

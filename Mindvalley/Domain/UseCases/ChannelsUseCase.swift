@@ -22,7 +22,9 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
     }
     
     func getNewEpisodes(completion: @escaping (Result<[MediaModel], Error>) -> Void) {
-        return channelsRepository.getNewEpisodes { (result) in
+        return channelsRepository.getNewEpisodes { (cached) in
+            completion(.success(cached))
+        } completion: { (result) in
             switch result {
                 case .success(let model):
                 completion(.success(model.data?.toDomain() ?? []))
@@ -30,11 +32,13 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
                 case .failure(let error):
                     completion(.failure(error))
             }
-         }
+        }
     }
     
     func getChannels(completion: @escaping (Result<[ChannelModel], Error>) -> Void) {
-        return channelsRepository.getChannels { (result) in
+        return channelsRepository.getChannels { (cached) in
+            completion(.success(cached))
+        } completion: { (result) in
             switch result {
                 case .success(let model):
                 completion(.success(model.data?.toDomain() ?? []))
@@ -42,11 +46,13 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
                 case .failure(let error):
                     completion(.failure(error))
             }
-         }
+        }
     }
     
     func getCetagories(completion: @escaping (Result<[CategoryModel], Error>) -> Void) {
-        return channelsRepository.getCetagories { (result) in
+        return channelsRepository.getCetagories { (cached) in
+            completion(.success(cached))
+        } completion: { (result) in
             switch result {
                 case .success(let model):
                 completion(.success(model.data?.toDomain() ?? []))
@@ -54,7 +60,7 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
                 case .failure(let error):
                     completion(.failure(error))
             }
-         }
+        }
     }
     
 }

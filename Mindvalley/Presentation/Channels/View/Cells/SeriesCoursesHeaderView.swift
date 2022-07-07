@@ -10,6 +10,7 @@ import UIKit
 class SeriesCoursesHeaderView: UICollectionReusableView {
     static let reuseIdentifier = String(describing: SeriesCoursesHeaderView.self)
     
+    let lineView = UIView()
     let textLabel = UILabel()
     let iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
     let mediaCountLabel = UILabel()
@@ -28,6 +29,7 @@ class SeriesCoursesHeaderView: UICollectionReusableView {
         textLabel.textColor = #colorLiteral(red: 0.5843137255, green: 0.5960784314, blue: 0.6156862745, alpha: 1)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        lineView.backgroundColor = UIColor(red: 60/255.0, green: 67/255.0, blue: 78/255.0, alpha: 1)
         
         let textStackView = UIStackView(arrangedSubviews: [textLabel, mediaCountLabel])
         textStackView.axis = .vertical
@@ -36,12 +38,18 @@ class SeriesCoursesHeaderView: UICollectionReusableView {
         let headerStackView = UIStackView(arrangedSubviews:[iconImageView, textStackView])
         headerStackView.axis = .horizontal
         headerStackView.alignment = .center
-        headerStackView.spacing = 10
+        headerStackView.spacing = 20
         
-        addSubview(headerStackView)
+        let verticalStack = UIStackView(arrangedSubviews: [lineView, headerStackView])
+        verticalStack.axis = .vertical
+        verticalStack.alignment = .top
+        verticalStack.spacing = 30
+        
+        addSubview(verticalStack)
          
-        headerStackView.translatesAutoresizingMaskIntoConstraints = false
+        verticalStack.translatesAutoresizingMaskIntoConstraints = false
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
+        lineView.translatesAutoresizingMaskIntoConstraints = false
         
         let inset: CGFloat = 10
         NSLayoutConstraint.activate(
@@ -50,6 +58,9 @@ class SeriesCoursesHeaderView: UICollectionReusableView {
                 headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
                 headerStackView.topAnchor.constraint(equalTo: topAnchor, constant: inset),
                 headerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset),
+                lineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+                lineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
+                lineView.heightAnchor.constraint(equalToConstant: 1),
                 iconImageView.widthAnchor.constraint(equalToConstant: 70.0),
                 iconImageView.heightAnchor.constraint(equalToConstant: 70.0)
             ]

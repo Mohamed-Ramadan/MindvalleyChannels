@@ -116,12 +116,12 @@ extension ChannelsViewController {
     
     private func getSeriesesCounrsesSection(sctionType: ChannelsViewModel.SectionType) -> NSCollectionLayoutSection? {
         //create item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(sctionType == .SERIES ? 0.9 : 0.45), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(sctionType == .SERIES ? 0.9 : 0.45), heightDimension: .fractionalHeight(sctionType == .SERIES ? 0.8 : 1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         //create group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(sctionType == .SERIES ? 0.35 : 0.6))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: sctionType == .SERIES ? .absolute(320) :  .fractionalHeight(0.6))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         group.interItemSpacing = NSCollectionLayoutSpacing.fixed(20.0)
         

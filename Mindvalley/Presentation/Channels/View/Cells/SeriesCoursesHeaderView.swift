@@ -12,7 +12,7 @@ class SeriesCoursesHeaderView: UICollectionReusableView {
     
     let lineView = UIView()
     let textLabel = UILabel()
-    let iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 70, height: 70))
+    let iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
     let mediaCountLabel = UILabel()
     
     override init(frame: CGRect) {
@@ -26,8 +26,11 @@ class SeriesCoursesHeaderView: UICollectionReusableView {
     
     private func configure() {
         textLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-        textLabel.textColor = #colorLiteral(red: 0.5843137255, green: 0.5960784314, blue: 0.6156862745, alpha: 1)
+        textLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        mediaCountLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        mediaCountLabel.textColor = #colorLiteral(red: 0.5843137255, green: 0.5960784314, blue: 0.6156862745, alpha: 1)
         
         lineView.backgroundColor = UIColor(red: 60/255.0, green: 67/255.0, blue: 78/255.0, alpha: 1)
         
@@ -61,8 +64,8 @@ class SeriesCoursesHeaderView: UICollectionReusableView {
                 lineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
                 lineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
                 lineView.heightAnchor.constraint(equalToConstant: 1),
-                iconImageView.widthAnchor.constraint(equalToConstant: 70.0),
-                iconImageView.heightAnchor.constraint(equalToConstant: 70.0)
+                iconImageView.widthAnchor.constraint(equalToConstant: 50),
+                iconImageView.heightAnchor.constraint(equalToConstant: 50)
             ]
         )
         

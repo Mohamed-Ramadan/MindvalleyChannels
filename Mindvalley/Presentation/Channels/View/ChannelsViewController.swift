@@ -16,6 +16,7 @@ class ChannelsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var dataSource: ChannelsDataSource!
     private var channeclsViewModel: ChannelsViewModel!
+    var fullPageLoadingSpinner: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,37 @@ class ChannelsViewController: UIViewController {
         
         channeclsViewModel.reloadCompletionHandler = {
             self.configureSnapshot()
+        }
+        
+        channeclsViewModel.loadingCompletionHandler = { [weak self] in
+            guard let self = self else {
+                return
+            }
+             
+            self.updateLoading($0)
+        }
+        
+        channeclsViewModel.error = { errorMsg in
+            self.showAlert(with: errorMsg)
+        }
+    }
+    
+    private func updateLoading(_ loading: ChannelsViewModelLoading) {
+        switch loading {
+            case .fullScreen: self.handleFullPageLoading(isAnimating: true)
+            case .nextPage, .none: self.handleFullPageLoading(isAnimating: false)
+        }
+    }
+    
+    private func handleFullPageLoading(isAnimating: Bool) {
+        if isAnimating {
+            fullPageLoadingSpinner?.removeFromSuperview()
+            fullPageLoadingSpinner = self.makeActivityIndicator(size: .init(width: self.view.frame.width, height: 44))
+            self.view.addSubview(fullPageLoadingSpinner!)
+            fullPageLoadingSpinner?.center = self.view.center
+            fullPageLoadingSpinner?.startAnimating()
+        } else {
+            fullPageLoadingSpinner?.removeFromSuperview()
         }
     }
 }
@@ -110,8 +142,7 @@ extension ChannelsViewController {
         section.interGroupSpacing = spacing
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
 
-        //let layout = UICollectionViewCompositionalLayout(section: section)
-        
+
         section.boundarySupplementaryItems = getHeader()
         
         return section
@@ -190,7 +221,7 @@ extension ChannelsViewController {
                 if let headerSupplementaryView =
                     collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader
                                                                     , withReuseIdentifier: SeriesCoursesHeaderView.reuseIdentifier, for: indextPath) as? SeriesCoursesHeaderView {
-                    //let section = self.dataSource.snapshot().sectionIdentifiers[indextPath.section]
+                    
                     headerSupplementaryView.textLabel.text = section.title
                     headerSupplementaryView.iconImageView.loadImage(from: URL(string: section.headerIcon ?? "")!)
                     headerSupplementaryView.mediaCountLabel.text = "\(section.mediaCount ?? 0) \(section.type == .SERIES ? "series" : "courses")"

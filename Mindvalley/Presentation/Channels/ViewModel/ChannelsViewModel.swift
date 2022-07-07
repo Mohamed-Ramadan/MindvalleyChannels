@@ -144,11 +144,11 @@ class ChannelsViewModel: ChannelsViewModelInput {
     func refreshModels() {
         var sections: [ChannelSection] = []
         
-        let newEpisodesSection = ChannelSection(title: SectionType.NEWEPISODES.rawValue, type: .NEWEPISODES, headerIcon: nil, mediaCount: nil, media: self.newEpisodes)
+        let newEpisodesSection = ChannelSection(title: SectionType.NEWEPISODES.rawValue, type: .NEWEPISODES, headerIcon: nil, mediaCount: nil, media: Array(self.newEpisodes.prefix(6)))
         sections.append(newEpisodesSection)
         
         self.channels.forEach { channel in 
-            sections.append(ChannelSection(title: channel.title, type: (channel.series?.count == 0) ? .COURSE : .SERIES, headerIcon: channel.coverAsset.url, mediaCount: channel.mediaCount, media: channel.latestMedia))
+            sections.append(ChannelSection(title: channel.title, type: (channel.series?.count == 0) ? .COURSE : .SERIES, headerIcon: channel.coverAsset.url, mediaCount: channel.mediaCount, media: Array(channel.latestMedia.prefix(6))))
         }
         
         self.medias = sections

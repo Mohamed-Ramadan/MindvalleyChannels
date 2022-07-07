@@ -32,6 +32,10 @@ class ChannelsViewController: UIViewController {
         let newEpisodeNib = UINib(nibName: NewEpisodeCollectionViewCell.reuseIdentifier, bundle: nil)
         collectionView.register(newEpisodeNib, forCellWithReuseIdentifier: NewEpisodeCollectionViewCell.reuseIdentifier)
         
+        
+        let categoryNib = UINib(nibName: CategoryCollectionViewCell.reuseIdentifier, bundle: nil)
+        collectionView.register(categoryNib, forCellWithReuseIdentifier: CategoryCollectionViewCell.reuseIdentifier)
+        
         collectionView.collectionViewLayout = configureCollectionViewLayout()
         configureDataSource()
         configureSnapshot() 
@@ -60,9 +64,8 @@ extension ChannelsViewController {
                 section = self.getNewEpisodesSection()
             case .SERIES, .COURSE:
                 section = self.getSeriesesCounrsesSection(sctionType: sectionType)
-            default:
+            case .CATAGORIES:
                 section = self.getCategoriesSection()
-                break
             }
             
             return section
@@ -93,20 +96,21 @@ extension ChannelsViewController {
     }
     
     private func getCategoriesSection() -> NSCollectionLayoutSection? {
-        //create item
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.4), heightDimension: .absolute(75))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                             heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        
-        //create group
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = NSCollectionLayoutSpacing.fixed(20.0)
-        
-        //create section
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .absolute(75))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let spacing = CGFloat(10)
+        group.interItemSpacing = .fixed(spacing)
+
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        section.interGroupSpacing = spacing
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
+
+        //let layout = UICollectionViewCompositionalLayout(section: section)
         
         section.boundarySupplementaryItems = getHeader()
         
@@ -147,15 +151,15 @@ extension ChannelsViewController {
     func configureDataSource() {
         dataSource = ChannelsDataSource(collectionView: collectionView) { (collectionView: UICollectionView, indexPath: IndexPath, media: MediaModel) -> UICollectionViewCell? in
             
-            var reuseIdentifier: String = NewEpisodeCollectionViewCell.reuseIdentifier
+            var reuseIdentifier: String = ""
             
-//            switch indexPath.section {
-//            case 0: reuseIdentifier =  NewEpisodeCollectionViewCell.reuseIdentifier
-//            case 1: reuseIdentifier = NewEpisodeCollectionViewCell.reuseIdentifier
-//            //case 2: reuseIdentifier = RecomentationsCell.reuseIdentifier
-//            default: break//reuseIdentifier = RecomentationsCell.reuseIdentifier
-//            }
-//
+            let section = self.channeclsViewModel.medias[indexPath.section]
+            
+            switch section.type {
+            case .NEWEPISODES, .SERIES, .COURSE: reuseIdentifier =  NewEpisodeCollectionViewCell.reuseIdentifier
+            case .CATAGORIES: reuseIdentifier = CategoryCollectionViewCell.reuseIdentifier
+            }
+
 
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as?  MediaCell else {
                 return nil

@@ -15,6 +15,12 @@ struct MediaModel: Hashable {
     
     let identifier = UUID().uuidString
     
+    init(title: String) {
+        self.title = title
+        self.type = ""
+        self.coverAsset = ""
+        self.channelTitle = ""
+    }
     
     init(type: String, title: String, coverAsset: String, channelTitle: String) {
         self.title = title

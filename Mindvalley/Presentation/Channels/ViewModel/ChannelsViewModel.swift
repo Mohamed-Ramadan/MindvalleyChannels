@@ -151,6 +151,10 @@ class ChannelsViewModel: ChannelsViewModelInput {
             sections.append(ChannelSection(title: channel.title, type: (channel.series?.count == 0) ? .COURSE : .SERIES, headerIcon: channel.coverAsset.url, mediaCount: channel.mediaCount, media: Array(channel.latestMedia.prefix(6))))
         }
         
+        let categoriesSection = ChannelSection(title: SectionType.CATAGORIES.rawValue, type: .CATAGORIES, headerIcon: nil, mediaCount: nil, media: self.categories.map{ MediaModel(title: $0.name)})
+        
+        sections.append(categoriesSection)
+        
         self.medias = sections
     }
 }

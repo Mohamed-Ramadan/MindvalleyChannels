@@ -59,8 +59,8 @@ class SeriesCoursesHeaderView: UICollectionReusableView {
             [
                 headerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
                 headerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-                headerStackView.topAnchor.constraint(equalTo: topAnchor, constant: inset),
-                headerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset),
+                headerStackView.topAnchor.constraint(equalTo: topAnchor, constant: inset*2),
+                headerStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset*2),
                 lineView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
                 lineView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
                 lineView.heightAnchor.constraint(equalToConstant: 1),

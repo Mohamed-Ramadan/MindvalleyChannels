@@ -33,8 +33,8 @@ class TitleHeaderView: UICollectionReusableView {
             [
                 textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
                 textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-                textLabel.topAnchor.constraint(equalTo: topAnchor, constant: inset),
-                textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset)
+                textLabel.topAnchor.constraint(equalTo: topAnchor, constant: inset*2),
+                textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset*2)
             ]
         )
     }

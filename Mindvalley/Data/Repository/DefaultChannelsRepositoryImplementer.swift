@@ -8,24 +8,12 @@
 import Foundation
 
 final class DefaultChannelsRepositoryImplementer: ChannelsRepository {
+    
     private let channelsStorage : ChannelsResponseStorage
     
     init(channelsStorage : ChannelsResponseStorage = DefaultChannelsCoreDataStorage()) {
         self.channelsStorage = channelsStorage
     }
-    
-    func saveNewEpisodes(response: NewEpisodesResponseDTO) {
-        
-    }
-    
-    func saveChannels(response: ChannelsResponseDTO) {
-        
-    }
-    
-    func saveCategories(response: CategoriesResponseDTO) {
-        
-    }
-    
     
     func getNewEpisodes(cached: @escaping ([MediaModel])->Void,
                         completion: @escaping Response<NewEpisodesResponseDTO>) {
@@ -38,6 +26,10 @@ final class DefaultChannelsRepositoryImplementer: ChannelsRepository {
         
         // load NewEpisodes from remote service
         EndpointChannels.getNewEpisodes.request(completion: completion)
+    }
+    
+    func saveNewEpisodes(model: NewEpisodesResponseDTO) {
+        self.channelsStorage.saveNewEpisodes(responseDTO: model)
     }
     
     func getChannels(cached: @escaping ([ChannelModel])->Void,
@@ -53,6 +45,10 @@ final class DefaultChannelsRepositoryImplementer: ChannelsRepository {
         EndpointChannels.getChannels.request(completion: completion)
     }
     
+    func saveChannels(model: ChannelsResponseDTO) {
+        self.channelsStorage.saveChannels(responseDTO: model)
+    }
+    
     func getCetagories(cached: @escaping ([CategoryModel])->Void,
                        completion: @escaping Response<CategoriesResponseDTO>) {
         // load Cetagories from cache storage
@@ -64,6 +60,10 @@ final class DefaultChannelsRepositoryImplementer: ChannelsRepository {
        
         // load Cetagories from remote service
         EndpointChannels.getCetagories.request(completion: completion)
+    }
+    
+    func saveCetagories(model: CategoriesResponseDTO) {
+        self.channelsStorage.saveCategories(responseDTO: model)
     }
 }
 

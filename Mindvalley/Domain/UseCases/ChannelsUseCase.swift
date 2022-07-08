@@ -27,6 +27,11 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
         } completion: { (result) in
             switch result {
                 case .success(let model):
+                
+                if let data = model.data {
+                    self.channelsRepository.saveNewEpisodes(model: data)
+                }
+                 
                 completion(.success(model.data?.toDomain() ?? []))
                     
                 case .failure(let error):
@@ -41,6 +46,11 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
         } completion: { (result) in
             switch result {
                 case .success(let model):
+                
+                if let data = model.data {
+                    self.channelsRepository.saveChannels(model: data)
+                }
+                
                 completion(.success(model.data?.toDomain() ?? []))
                     
                 case .failure(let error):
@@ -55,6 +65,11 @@ final class DefaultChannelsUseCase: ChannelsUseCase {
         } completion: { (result) in
             switch result {
                 case .success(let model):
+                
+                if let data = model.data {
+                    self.channelsRepository.saveCetagories(model: data)
+                }
+                
                 completion(.success(model.data?.toDomain() ?? []))
                     
                 case .failure(let error):

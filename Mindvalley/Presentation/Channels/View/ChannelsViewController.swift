@@ -47,7 +47,9 @@ class ChannelsViewController: UIViewController {
         channeclsViewModel.update()
         
         channeclsViewModel.reloadCompletionHandler = {
-            self.configureSnapshot()
+            DispatchQueue.main.async {
+                self.configureSnapshot()
+            }
         }
         
         channeclsViewModel.loadingCompletionHandler = { [weak self] in

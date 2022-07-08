@@ -75,6 +75,7 @@ class ChannelsViewController: UIViewController {
             fullPageLoadingSpinner?.removeFromSuperview()
             fullPageLoadingSpinner = self.makeActivityIndicator(size: .init(width: self.view.frame.width, height: 44))
             self.view.addSubview(fullPageLoadingSpinner!)
+            self.view.bringSubviewToFront(fullPageLoadingSpinner!)
             fullPageLoadingSpinner?.center = self.view.center
             fullPageLoadingSpinner?.startAnimating()
         } else {

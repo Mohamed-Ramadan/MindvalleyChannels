@@ -86,13 +86,13 @@ class ChannelsViewModel: ChannelsViewModelInput {
     
     //MARK:- Private
     
-    private func load(loading: ChannelsViewModelLoading) {
+    private func load(loading: ChannelsViewModelLoading = .none) {
         self.getNewEpisodes(loading: loading)
         self.getChannels(loading: loading)
         self.getCategories(loading: loading)
     }
     
-    func getNewEpisodes(loading: ChannelsViewModelLoading) {
+    func getNewEpisodes(loading: ChannelsViewModelLoading = .none) {
         self.loading = loading
         
         channelsUseCase.getNewEpisodes { (result) in
@@ -107,7 +107,7 @@ class ChannelsViewModel: ChannelsViewModelInput {
         }
     }
     
-    func getChannels(loading: ChannelsViewModelLoading) {
+    func getChannels(loading: ChannelsViewModelLoading = .none) {
         self.loading = loading
         
         channelsUseCase.getChannels { (result) in
@@ -122,7 +122,7 @@ class ChannelsViewModel: ChannelsViewModelInput {
         }
     }
     
-    func getCategories(loading: ChannelsViewModelLoading) {
+    func getCategories(loading: ChannelsViewModelLoading = .none) {
         self.loading = loading
         
         channelsUseCase.getCetagories { (result) in

@@ -19,6 +19,7 @@
 		DC04CB8528778ADD00601B3F /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04CB8328778ADD00601B3F /* CategoryCollectionViewCell.swift */; };
 		DC04CB8628778ADD00601B3F /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC04CB8428778ADD00601B3F /* CategoryCollectionViewCell.xib */; };
 		DC04CB882877ACCE00601B3F /* ChannelsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04CB872877ACCE00601B3F /* ChannelsUseCaseTests.swift */; };
+		DC04CB8A287A2DBA00601B3F /* ChannelsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC04CB89287A2DBA00601B3F /* ChannelsViewModelTests.swift */; };
 		DC0B9C122873A0A10007FE1F /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4FD287260BB00B129D1 /* MediaModel.swift */; };
 		DC63E8B62873AD520014FFF5 /* Channels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D4F42872600000B129D1 /* Channels.xcdatamodeld */; };
 		DCE8D3CB28719FCA00B129D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D3CA28719FCA00B129D1 /* AppDelegate.swift */; };
@@ -80,6 +81,7 @@
 		DC04CB8328778ADD00601B3F /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC04CB8428778ADD00601B3F /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		DC04CB872877ACCE00601B3F /* ChannelsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsUseCaseTests.swift; sourceTree = "<group>"; };
+		DC04CB89287A2DBA00601B3F /* ChannelsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewModelTests.swift; sourceTree = "<group>"; };
 		DCE8D3C728719FCA00B129D1 /* Mindvalley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mindvalley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE8D3CA28719FCA00B129D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCE8D3CC28719FCA00B129D1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				DCE8D3E128719FCB00B129D1 /* MindvalleyTests.swift */,
 				DC04CB872877ACCE00601B3F /* ChannelsUseCaseTests.swift */,
+				DC04CB89287A2DBA00601B3F /* ChannelsViewModelTests.swift */,
 			);
 			path = MindvalleyTests;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCE8D3E228719FCB00B129D1 /* MindvalleyTests.swift in Sources */,
+				DC04CB8A287A2DBA00601B3F /* ChannelsViewModelTests.swift in Sources */,
 				DC04CB882877ACCE00601B3F /* ChannelsUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

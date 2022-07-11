@@ -25,11 +25,11 @@ class SeriesCoursesHeaderView: UICollectionReusableView {
     }
     
     private func configure() {
-        textLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        textLabel.font = UIFont(name: "Roboto-Bold", size: 20)
         textLabel.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        mediaCountLabel.font = UIFont.boldSystemFont(ofSize: 16.0)
+        mediaCountLabel.font = UIFont(name: "Roboto-Bold", size: 16)
         mediaCountLabel.textColor = #colorLiteral(red: 0.5843137255, green: 0.5960784314, blue: 0.6156862745, alpha: 1)
         
         lineView.backgroundColor = UIColor(red: 60/255.0, green: 67/255.0, blue: 78/255.0, alpha: 1)

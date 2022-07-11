@@ -22,6 +22,8 @@ class ChannelsViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Channels"
+        self.navigationController?.navigationBar.titleTextAttributes = [.font: UIFont(name: "Roboto-Bold", size: 30)!]
+
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
         bindViewModel()

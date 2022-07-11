@@ -49,6 +49,9 @@
 		DCE8D5142872634200B129D1 /* DefaultChannelsCoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D5122872634200B129D1 /* DefaultChannelsCoreDataStorage.swift */; };
 		DCE8D5152872634200B129D1 /* ChannelsResponseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D5132872634200B129D1 /* ChannelsResponseStorage.swift */; };
 		DCE8D5172872635600B129D1 /* ChannelResponseEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE8D5162872635600B129D1 /* ChannelResponseEntity+Mapping.swift */; };
+		FA1B8B20287C829A0092C8E7 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA1B8B14287C82990092C8E7 /* Roboto-Medium.ttf */; };
+		FA1B8B24287C829A0092C8E7 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA1B8B18287C829A0092C8E7 /* Roboto-Bold.ttf */; };
+		FA1B8B25287C829A0092C8E7 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA1B8B19287C829A0092C8E7 /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +118,9 @@
 		DCE8D5122872634200B129D1 /* DefaultChannelsCoreDataStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultChannelsCoreDataStorage.swift; sourceTree = "<group>"; };
 		DCE8D5132872634200B129D1 /* ChannelsResponseStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsResponseStorage.swift; sourceTree = "<group>"; };
 		DCE8D5162872635600B129D1 /* ChannelResponseEntity+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChannelResponseEntity+Mapping.swift"; sourceTree = "<group>"; };
+		FA1B8B14287C82990092C8E7 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		FA1B8B18287C829A0092C8E7 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		FA1B8B19287C829A0092C8E7 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +217,7 @@
 				DCE8D50A2872613000B129D1 /* Presentation */,
 				DCE8D4F92872608700B129D1 /* Domain */,
 				DCE8D4D728725F0F00B129D1 /* Data */,
+				FA1B8B0C287C826A0092C8E7 /* Resources */,
 				DCE8D3D328719FCB00B129D1 /* Assets.xcassets */,
 				DCE8D3D528719FCB00B129D1 /* LaunchScreen.storyboard */,
 				DCE8D3D828719FCB00B129D1 /* Info.plist */,
@@ -394,6 +401,32 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		FA1B8B0C287C826A0092C8E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA1B8B0D287C82790092C8E7 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FA1B8B0D287C82790092C8E7 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA1B8B0E287C82880092C8E7 /* Roboto */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FA1B8B0E287C82880092C8E7 /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				FA1B8B18287C829A0092C8E7 /* Roboto-Bold.ttf */,
+				FA1B8B14287C82990092C8E7 /* Roboto-Medium.ttf */,
+				FA1B8B19287C829A0092C8E7 /* Roboto-Regular.ttf */,
+			);
+			path = Roboto;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -498,9 +531,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1B8B25287C829A0092C8E7 /* Roboto-Regular.ttf in Resources */,
+				FA1B8B24287C829A0092C8E7 /* Roboto-Bold.ttf in Resources */,
 				DC04CB6928765DC000601B3F /* ChannelsViewController.xib in Resources */,
 				DC04CB8628778ADD00601B3F /* CategoryCollectionViewCell.xib in Resources */,
 				DCE8D3D728719FCB00B129D1 /* LaunchScreen.storyboard in Resources */,
+				FA1B8B20287C829A0092C8E7 /* Roboto-Medium.ttf in Resources */,
 				DC04CB6D28765EC500601B3F /* NewEpisodeCollectionViewCell.xib in Resources */,
 				DCE8D3D428719FCB00B129D1 /* Assets.xcassets in Resources */,
 			);
